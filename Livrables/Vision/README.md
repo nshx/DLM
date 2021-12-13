@@ -2,7 +2,7 @@
 ### Algorithmes de capture et traitements des flux vidéos</br>
 Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhicule en mouvement, à la recherche d'éventuelles dangers/obstacles et/ou informations qui doivent impérativement être retranscrite au conducteur. Ainsi, le programme principal (multiple_video_flux ou single_video_flux) instancie 3 niveaux de criticité :</br>
 <ul>
-  - <strong>Information</strong> -> Evenement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: pieton au loin).</br>
+  - <strong>Information</strong> -> Evénement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: pieton au loin ou panneaux limitation de vitesse 50 km/h).</br>
   - <strong>Warning</strong> -> Evénement qui sucite une action de la part de l'utilisateur dans les plus brefs délais (exemple: feu orange - ralentir en vue de s'arrêter).</br>
   - <strong>Danger</strong> -> Evénement dont l'accident est quasi inevitable sans l'action autonome du véhicule (exemple: Piéton à une distance d'arrêt limite, le véhicule entreprend l'arrêt d'urgence par lui-même [ ce stade ne s'enclenche que si le "warning" a déjà été lancé préalablement et qu'aucune réponse de l'utilisateur ne soit servenu ].</br>
 </ul>
@@ -26,11 +26,10 @@ Dans le dossier décompressé src.zip, vous trouverez l'arborescence suivante :
 src: Algorithme de détection de feux tricolores terminé ainsi que celui pour la détection d'objet.</br>
 
 ## Installation
-Télécharger puis décompresser le fichier WebApp_V6.zip.</br>
+Télécharger puis décompresser le fichier src.zip.</br>
 
 ## Application WEB
-Ouvrir le dossier "WebApp_V6".</br>
-Double-cliquez sur le fichier "page.html".</br>
+Dans une invite de commande, déplaceé-vous jusqu'à l'emplacement des codes sources python.</br>
 
 ### Fonctionnement de la page WEB [Onglet "MAP"]
 #### Mode Simulation : Définir les niveaux des signaux RSSI.</br>
