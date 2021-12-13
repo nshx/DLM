@@ -1,5 +1,5 @@
 ## DESCRIPTION
-### Algorithmes de capture et traitements des flux vidéos.</br>
+### Algorithmes de capture et traitements des flux vidéos</br>
 Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhicule en mouvement, à la recherche d'éventuelles dangers/obstacles et/ou informations qui doivent impérativement être retranscrite au conducteur. Ainsi, le programme principal (multiple_video_flux ou single_video_flux) instancie 3 niveaux de criticité :</br>
 <ul>
   - <strong>Information</strong> -> Evenement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: pieton au loin).</br>
