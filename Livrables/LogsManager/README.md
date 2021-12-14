@@ -13,11 +13,11 @@ sudo systemctl (enable|disable) mosquitto
 ```
 
 ## Launch Mosquitto Broker
-From Ubuntu shell :
+From Ubuntu shell :</br>
 `
 sudo service mosquitto (start|stop)
 mosquitto --verbose
-`
+`</br>
 By default, Mosquitto broker listens on port 1883</br>
 ![image](https://user-images.githubusercontent.com/92402906/145909476-255130fd-8a60-49ff-90b9-9c56cf0c27c1.png)
 
