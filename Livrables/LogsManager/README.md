@@ -88,3 +88,12 @@ In the file setting.js, look for 'functionGlobalContext'</br>
 press 'I' (insert) to enter the following line :</br>
 ![image](https://user-images.githubusercontent.com/92402906/145914616-90a45305-d4ed-4094-b27f-6d4569384ff0.png)</br>
 press 'esc' ('echap') then write ':wq' to save the changes.
+
+# Node-red Flow set up
+1. Download the node-red-flow.txt file
+2. Copy the content
+3. Start node-red
+4. ![image](https://user-images.githubusercontent.com/92402906/145955018-9097154f-59e6-4ee6-b765-0d4018919f4f.png)
+5. Paste the content
+6. ![image](https://user-images.githubusercontent.com/92402906/145955151-30546255-fe8a-403c-8997-e95610af9e0f.png)
+7. Deploy
