@@ -62,16 +62,16 @@ ou</br>
 ou</br>
   > ./Multiple_Video_Flux.py</br>
 
-### Fonctionnement des différents algorithmes 
-#### Single_Flux_Video & Multiple_Flux_Video.</br>
+## Fonctionnement des différents algorithmes 
+### Single_Flux_Video & Multiple_Flux_Video.</br>
 
-#### Traffic_Light_Detection</br>
+### Traffic_Light_Detection</br>
 
-#### Object_Detection</br>
+### Object_Detection</br>
 
-#### Line_Detection</br>
+### Line_Detection</br>
 
-#### Color_Detection</br>
+### Color_Detection</br>
 
 
 ## Updates :
