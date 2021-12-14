@@ -117,7 +117,7 @@ Transformé de hough linéaire
 ### Color_Detection</br>
 Pas utilisé.
 
-## Mis à jour :
+## Mise à jour :
 &nbsp;&nbsp;&nbsp;- 14/12/2021: Version 1.0.0, Alexandre LEPERS (lepers199)
 
 ## Références
