@@ -39,7 +39,7 @@ Dans le dossier décompressé src.zip, vous trouverez l'arborescence suivante :
     Color_Detection.py                  => Code source pour la détection de couleurs avec masques dans l'espace HSV
     Line_Detection.py                   => Code source pour la détection de ligne droite
 ``` 
-Fichier src: _Algorithme de détection de feux tricolores terminé ainsi que celui pour la détection d'objets.</br>
+Fichier src: _Algorithme de détection de feux tricolores terminé ainsi que celui pour la détection d'objets._</br>
 
 ## Installation
 Télécharger puis décompresser le fichier src.zip.</br>
