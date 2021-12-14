@@ -63,10 +63,10 @@ mongosh "mongodb+srv://cluster0.t22mb.mongodb.net/DLM" --username <user>
 Node-RED is a flow-based development tool for visual programming developed originally by IBM for wiring together hardware devices, APIs and online services as part of the Internet of Things.
 ## Installation
 From Ubuntu Shell :
-`
+```
 sudo apt install build-essential git curl
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered
-`
+```
 note: first of all, it installs nodejs and npm before node-red
 
 ## Launch node-red
