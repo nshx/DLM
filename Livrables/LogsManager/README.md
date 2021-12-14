@@ -22,16 +22,16 @@ By default, Mosquitto broker listens on port 1883</br>
 ![image](https://user-images.githubusercontent.com/92402906/145909476-255130fd-8a60-49ff-90b9-9c56cf0c27c1.png)
 
 ### Test/debug : subscriber
-`
+```
 mosquitto_sub -t <topic>
-`</br>
+```
 Assert payloads are decoded and sent to the correct topic</br>
 ![image](https://user-images.githubusercontent.com/92402906/145909582-9008eafe-5ee4-4a29-b871-891bf18a2abe.png)
 
 ### Test/debug : publisher
-`
+```
 mosquitto_pub -h localhost -P 1883 -t <topic> -m <message>
-`</br>
+```
 Simulate alerts (before node-red implementation)
 
 # MongoDB Atlas - Remote free DB
@@ -54,9 +54,9 @@ sudo apt-get update
 sudo apt-get install -y mongodb-mongosh
 ```
 ### Start mongosh
-`
+```
 mongosh "mongodb+srv://cluster0.t22mb.mongodb.net/DLM" --username <user>
-`
+```
 ![image](https://user-images.githubusercontent.com/92402906/145914954-4f443ea4-1477-43fa-92fc-f8a9e92d0b2a.png)
 
 # Node-red
@@ -70,9 +70,9 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/mast
 note: first of all, it installs nodejs and npm before node-red
 
 ## Launch node-red
-`
+```
 node-red
-`</br>
+```
 Once launched, node-red GUI is available at http://127.0.0.1:1880</br>
 ![image](https://user-images.githubusercontent.com/92402906/145910656-a3c22296-c4e6-49f4-b55b-87cbc03fee32.png)
 ![image](https://user-images.githubusercontent.com/92402906/145910698-e2a593fd-7ace-461e-b717-7a13f579e601.png)
