@@ -1,25 +1,24 @@
 ## DESCRIPTION
 ### Algorithmes de capture et traitements des flux vidéos</br>
-Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhicule en mouvement, à la recherche d'éventuelles dangers/obstacles et/ou informations qui doivent impérativement être retranscrite au conducteur. Ainsi, le programme principal (multiple_video_flux ou single_video_flux) instancie 3 niveaux de criticité pour chaque éléments qu'il peut détecter.</br>
+Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhicule en mouvement, à la recherche d'éventuels dangers/obstacles et/ou informations qui doivent impérativement être retranscrites au conducteur. Ainsi, le programme principal (multiple_video_flux ou single_video_flux) instancie 3 niveaux de criticité pour chaque élément qu'il peut détecter.</br>
 
 #### Niveaux de criticité</br>
 <ul>
-  - <strong>Information</strong> -> Evénement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: pieton au loin ou panneaux limitation de vitesse 50 km/h).</br>
-  - <strong>Warning</strong> -> Evénement qui sucite une action de la part de l'utilisateur dans les plus brefs délais (exemple: feu orange - ralentir en vue de s'arrêter).</br>
-  - <strong>Danger</strong> -> Evénement dont l'accident est quasi inevitable sans l'action autonome du véhicule (exemple: Piéton à une distance d'arrêt limite, le véhicule entreprend l'arrêt d'urgence par lui-même [ ce stade ne s'enclenche que si le "warning" a déjà été lancé préalablement et qu'aucune réponse de l'utilisateur ne soit servenu ].</br>
+  - <strong>Information</strong> -> Evénement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: piéton au loin ou panneaux limitation de vitesse 50 km/h).</br>
+  - <strong>Warning</strong> -> Evénement qui suscite une action de la part de l'utilisateur dans les plus brefs délais (exemple: feu orange - ralentir en vue de s'arrêter).</br>
+  - <strong>Danger</strong> -> Evénement dont l'accident est quasi inévitable sans l'action autonome du véhicule (exemple: Piéton à une distance d'arrêt limite, le véhicule entreprend l'arrêt d'urgence par lui-même [ ce stade ne s'enclenche que si le "warning" a déjà été lancé préalablement et qu'aucune réponse de l'utilisateur ne soit servenu ].</br>
 </ul>
 
 #### Eléments détectable</br>
 <ul>
-  - Feux tricolores</br>
-  - Personnes</br>
-  - Voitures</br>
+  - Feu tricolore</br>
+  - Personne</br>
+  - Voiture</br>
   - Bus</br>
-  - Motos</br>
-  - Voitures</br>
-  - Chats</br>
-  - Chiens</br>
-  - Chevaux</br>
+  - Moto</br>
+  - Chat</br>
+  - Chien</br>
+  - Cheval</br>
 </ul>
 
 
@@ -65,12 +64,12 @@ ou</br>
 ## Fonctionnement des différents algorithmes 
 ### Single_Flux_Video & Multiple_Flux_Video</br>
 <ul>
-> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
+> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe utile les threads pour séparer les flux de chaque caméra sur des canaux bien distinct.</br>
 
     > La fonction principale qui est appelée par l'objet caméra dans son thread s'appelle camPreview().</br>
-    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitement dans une fenêtre graphique.
+    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du modème caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitements dans une fenêtre graphique.
     
-    _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera</br> visualisé ni enregistré._
+    _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera visualisé ni enregistré._
     
         .--------------------------.
         |        |        |        |                     
@@ -86,7 +85,7 @@ ou</br>
 
 ### Traffic_Light_Detection</br>
 Ici, 2 fonctions sont utilisées pour détecter les feux tricolores de par leurs formes et leurs couleurs:</br>
-  - Fonction "find_rect()" => Recherche les formes rectangulaires verticales noires dans un espace colorimétrique HSV. Application de traitement d'image courant:</br>
+  - Fonction "find_rect()" => Recherche les formes rectangulaires verticales noires dans un espace colorimétrique HSV. Application de traitement d'images:</br>
           > Elévation du contraste pour le noir: cv2.normalize(pixels_noir, 0, 255, cv2.NORM_MINMAX)</br>
           > Construction d'élements structurés de taille 3x3 et de forme rectangulaire: cv2.getStructuringElement()</br>
           > Suppression des faibles contours: cv2.morphologyEx(élements_strcturés, cv2.MORPH_OPEN, kernel)</br>
