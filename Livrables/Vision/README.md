@@ -110,12 +110,15 @@ Ici, 2 fonctions sont utilisées pour détecter les feux tricolores de par leurs
 
 ### Object_Detection</br>
 Je me base sur un programme d'intelligence artificiel pré-entrainé.
+Explications disponible ici: https://www.framboise314.fr/i-a-realisez-un-systeme-de-reconnaissance-dobjets-avec-raspberry-pi/ 
 
 ### Line_Detection</br>
-Transformé de hough linéaire
+Transformé de hough linéaire.
+Explications disponible ici: https://www.it-swarm-fr.com/fr/python/comment-detecter-les-lignes-dans-lopencv/833114278/
 
 ### Color_Detection</br>
-Pas utilisé.
+HSV -> Masques
+Explications disponible ici: https://www.it-swarm-fr.com/fr/python/comment-detecter-les-lignes-dans-lopencv/833114278/
 
 ## Mise à jour :
 &nbsp;&nbsp;&nbsp;- 14/12/2021: Version 1.0.0, Alexandre LEPERS (lepers199)
