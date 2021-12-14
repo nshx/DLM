@@ -1,12 +1,14 @@
 ## DESCRIPTION
 ### Algorithmes de capture et traitements des flux vidéos</br>
 Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhicule en mouvement, à la recherche d'éventuelles dangers/obstacles et/ou informations qui doivent impérativement être retranscrite au conducteur. Ainsi, le programme principal (multiple_video_flux ou single_video_flux) instancie 3 niveaux de criticité pour chaque éléments qu'il peut détecter.</br>
+
 #### Niveaux de criticité</br>
 <ul>
   - <strong>Information</strong> -> Evénement dont le danger est proche de 0 mais qui pourrait dans l'avenir être une menace (exemple: pieton au loin ou panneaux limitation de vitesse 50 km/h).</br>
   - <strong>Warning</strong> -> Evénement qui sucite une action de la part de l'utilisateur dans les plus brefs délais (exemple: feu orange - ralentir en vue de s'arrêter).</br>
   - <strong>Danger</strong> -> Evénement dont l'accident est quasi inevitable sans l'action autonome du véhicule (exemple: Piéton à une distance d'arrêt limite, le véhicule entreprend l'arrêt d'urgence par lui-même [ ce stade ne s'enclenche que si le "warning" a déjà été lancé préalablement et qu'aucune réponse de l'utilisateur ne soit servenu ].</br>
 </ul>
+
 #### Eléments détectable</br>
 <ul>
   - <strong>Feux tricolores</strong></br>
