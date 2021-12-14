@@ -1,0 +1,433 @@
+[
+    {
+        "id": "11c28ba8.4377a4",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "b512e315.e6644",
+        "type": "inject",
+        "z": "11c28ba8.4377a4",
+        "name": "ticker1jour",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "01 00 * * *",
+        "once": false,
+        "onceDelay": "",
+        "topic": "DEBUG",
+        "payloadType": "date",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "0f772d7a327fa2d1"
+            ]
+        ]
+    },
+    {
+        "id": "caa5d5ac.150cf8",
+        "type": "file",
+        "z": "11c28ba8.4377a4",
+        "name": "logs",
+        "filename": "/home/nshx/.node-red/DLM/logs/logs.json",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 530,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cb1f6b8f.63eac8",
+        "type": "exec",
+        "z": "11c28ba8.4377a4",
+        "command": "rm /home/nshx/.node-red/DLM/logs/logs.json",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "",
+        "timer": "",
+        "winHide": false,
+        "name": "clearLocalDB",
+        "x": 773,
+        "y": 462,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9f6e1961.56f758",
+        "type": "mqtt in",
+        "z": "11c28ba8.4377a4",
+        "name": "",
+        "topic": "/dlm/logs",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "9587a71d.b08928",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "00689b824c21f3a0"
+            ]
+        ]
+    },
+    {
+        "id": "4c894a2d.40c5a4",
+        "type": "inject",
+        "z": "11c28ba8.4377a4",
+        "name": "manTick",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "0f772d7a327fa2d1"
+            ]
+        ]
+    },
+    {
+        "id": "3a6bfae7.d1de46",
+        "type": "comment",
+        "z": "11c28ba8.4377a4",
+        "name": "Acquisition des données MQTT",
+        "info": "",
+        "x": 190,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "9393c8a2.4df018",
+        "type": "comment",
+        "z": "11c28ba8.4377a4",
+        "name": "Envoi des données puis suppression de la db locale",
+        "info": "",
+        "x": 250,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4a931634.ca4158",
+        "type": "comment",
+        "z": "11c28ba8.4377a4",
+        "name": "Récupération de l'ID de la voiture",
+        "info": "",
+        "x": 187,
+        "y": 38,
+        "wires": []
+    },
+    {
+        "id": "38877363.04f33c",
+        "type": "inject",
+        "z": "11c28ba8.4377a4",
+        "name": "startTicker",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payloadType": "str",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "991e31d6.7bbcd",
+                "f4d52df5dbffcb51"
+            ]
+        ]
+    },
+    {
+        "id": "991e31d6.7bbcd",
+        "type": "http request",
+        "z": "11c28ba8.4377a4",
+        "name": "getUUID",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "/sys/firmware/devicetree/base/uuid",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "credentials": {
+            "user": "",
+            "password": ""
+        },
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "c1ec52f6.cc6ea"
+            ]
+        ]
+    },
+    {
+        "id": "c1ec52f6.cc6ea",
+        "type": "function",
+        "z": "11c28ba8.4377a4",
+        "name": "hashUUID",
+        "func": "var UUID = msg.payload.result;\nglobal.set(\"carID\", UUID);\n\nreturn UUID;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 80,
+        "wires": [
+            [
+                "37849b0a94ad3e28"
+            ]
+        ]
+    },
+    {
+        "id": "00689b824c21f3a0",
+        "type": "function",
+        "z": "11c28ba8.4377a4",
+        "name": "logsGenerator",
+        "func": "try{\n    var date;\n    date = new Date();\n    date = (\n        date.getFullYear() + '-' \n        + ('00' + (date.getMonth()+1)).slice(-2) + '-'\n        + ('00' + date.getDate()).slice(-2) + ' '\n        + ('00' + date.getHours()).slice(-2) + ':'\n        + ('00' + date.getMinutes()).slice(-2) + ':'\n        + ('00' + date.getSeconds()).slice(-2)\n    );\n     \n    var m_json = {\n        \"payload\":{\n            \"carID\"   : \"12345\", //global.get(\"carID\"),\n            \"topic\"   : msg.topic,\n            \"rawData\" : msg.payload.toString(),\n            \"time\"    : date,\n            \"camera\"  : CC(msg.payload.substring(0,2)),\n            \"type\"    : TT(msg.payload.substring(2,4)),\n            \"data\"    : DDDD(msg.payload.substring(4,8))\n        }\n    };\n    \n    return [m_json, {\"payload\" : DDDD(msg.payload.substring(4,8))}];\n} catch (Exception) {\n    return \"trame inconnue\"\n}\n\nfunction CC(cc){\n    try{\n        if ( cc == \"00\" ) { return \"front\"; }\n        if ( cc == \"01\" ) { return \"back\"; }\n        else { return \"camera inconnue\"; }\n    }catch ( Exception ){\n        return \"erreur camera\";\n    }\n}\n\nfunction TT(tt){\n    try{\n        if ( tt == \"00\" ) { return \"info\"; }\n        if ( tt == \"01\" ) { return \"warning\"; }\n        if ( tt == \"10\" ) { return \"critical\"; }\n        else { return \"type inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur type\";\n    }\n}\nfunction DDDD(dddd){\n    try{\n        if ( dddd == \"0000\" ) { return \"pieton\"; }\n        if ( dddd == \"0001\" ) { return \"voiture\"; }\n        if ( dddd == \"0010\" ) { return \"camion\"; }\n        if ( dddd == \"0011\" ) { return \"velo\"; }\n        if ( dddd == \"0100\" ) { return \"ligne\"; }\n        if ( dddd == \"0101\" ) { return \"feu_R\"; }\n        if ( dddd == \"0110\" ) { return \"feu_V\"; }\n        if ( dddd == \"0111\" ) { return \"vitesse\"; }\n        if ( dddd == \"1000\" ) { return \"plaque\"; }\n        if ( dddd == \"1001\" ) { return \"stop\"; }\n        if ( dddd == \"1010\" ) { return \"ceder_pass\"; }\n        if ( dddd == \"1011\" ) { return \"sens_interd\"; }\n        else { return \"code inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur code\";\n    }\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "3da0cf8b05e794c7",
+                "caa5d5ac.150cf8"
+            ],
+            [
+                "31e4a00b9a03def8",
+                "b363e658216d7743"
+            ]
+        ]
+    },
+    {
+        "id": "3da0cf8b05e794c7",
+        "type": "debug",
+        "z": "11c28ba8.4377a4",
+        "name": "debugLogs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "974b316904be13c1",
+        "type": "inject",
+        "z": "11c28ba8.4377a4",
+        "name": "manTest",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/dlm/logs",
+        "payload": "01000101",
+        "payloadType": "str",
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "00689b824c21f3a0"
+            ]
+        ]
+    },
+    {
+        "id": "37849b0a94ad3e28",
+        "type": "debug",
+        "z": "11c28ba8.4377a4",
+        "name": "UUID",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "31e4a00b9a03def8",
+        "type": "mqtt out",
+        "z": "11c28ba8.4377a4",
+        "name": "display",
+        "topic": "/dlm/display/",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9587a71d.b08928",
+        "x": 530,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b363e658216d7743",
+        "type": "debug",
+        "z": "11c28ba8.4377a4",
+        "name": "debugDisplay",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "0f772d7a327fa2d1",
+        "type": "file in",
+        "z": "11c28ba8.4377a4",
+        "name": "getLogs",
+        "filename": "/home/nshx/.node-red/DLM/logs/logs.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 323,
+        "y": 462,
+        "wires": [
+            [
+                "8eb8fbc7dd8985d7"
+            ]
+        ]
+    },
+    {
+        "id": "f4d52df5dbffcb51",
+        "type": "ip",
+        "z": "11c28ba8.4377a4",
+        "name": "ip",
+        "https": false,
+        "timeout": "5000",
+        "internalIPv4": true,
+        "internalIPv6": false,
+        "publicIPv4": true,
+        "publicIPv6": false,
+        "x": 290,
+        "y": 120,
+        "wires": [
+            [
+                "29a0bfde0ce9e7a0"
+            ]
+        ]
+    },
+    {
+        "id": "29a0bfde0ce9e7a0",
+        "type": "debug",
+        "z": "11c28ba8.4377a4",
+        "name": "IPv4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8eb8fbc7dd8985d7",
+        "type": "function",
+        "z": "11c28ba8.4377a4",
+        "d": true,
+        "name": "saveData2RemoteDB",
+        "func": "var { MongoClient } = context.global.get('mongodb');\nconst DB_USER = 'adminfgo';\nconst PASSWORD = encodeURIComponent('796nfo41'); \nconst uri = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0.t22mb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority\"`;\nconst client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst findItems = async () => {\n    try {\n        await client.connect();\n        console.log(\"Connected to mongodb!\");\n        const db = client.db('DLM').collection('logs');\n        const items = await db.collection('items').insertMany(msg.payload);\n    } catch(e) {\n        console.error(e);\n    }\n    finally {\n        // close connection\n        client.close();\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "mongodb",
+                "module": "mongodb"
+            }
+        ],
+        "x": 543,
+        "y": 462,
+        "wires": [
+            [
+                "cb1f6b8f.63eac8"
+            ]
+        ]
+    },
+    {
+        "id": "9587a71d.b08928",
+        "type": "mqtt-broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
