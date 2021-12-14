@@ -85,6 +85,6 @@ npm install mongodb
 vi setting.js
 ```
 In the file setting.js, look for 'functionGlobalContext'</br>
-press 'I' (insert) to enter the following line :
-![image](https://user-images.githubusercontent.com/92402906/145914616-90a45305-d4ed-4094-b27f-6d4569384ff0.png)
+press 'I' (insert) to enter the following line :</br>
+![image](https://user-images.githubusercontent.com/92402906/145914616-90a45305-d4ed-4094-b27f-6d4569384ff0.png)</br>
 press 'esc' ('echap') then write ':wq' to save the changes.
