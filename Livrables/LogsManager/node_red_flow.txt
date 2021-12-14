@@ -1,13 +1,16 @@
 [
     {
-        "id": "11c28ba8.4377a4",
+        "id": "7842e8e0992ee154",
         "type": "tab",
-        "label": "Flow 1"
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
     },
     {
-        "id": "b512e315.e6644",
+        "id": "445cc91794e19c31",
         "type": "inject",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "ticker1jour",
         "props": [
             {
@@ -24,34 +27,34 @@
         "onceDelay": "",
         "topic": "DEBUG",
         "payloadType": "date",
-        "x": 130,
-        "y": 420,
+        "x": 190,
+        "y": 480,
         "wires": [
             [
-                "0f772d7a327fa2d1"
+                "808855b677a8a9f7"
             ]
         ]
     },
     {
-        "id": "caa5d5ac.150cf8",
+        "id": "063b8e11d023b053",
         "type": "file",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "logs",
         "filename": "/home/nshx/.node-red/DLM/logs/logs.json",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "utf8",
-        "x": 530,
+        "x": 590,
         "y": 180,
         "wires": [
             []
         ]
     },
     {
-        "id": "cb1f6b8f.63eac8",
+        "id": "8b560209cfd79020",
         "type": "exec",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "command": "rm /home/nshx/.node-red/DLM/logs/logs.json",
         "addpay": false,
         "append": "",
@@ -59,8 +62,8 @@
         "timer": "",
         "winHide": false,
         "name": "clearLocalDB",
-        "x": 773,
-        "y": 462,
+        "x": 730,
+        "y": 440,
         "wires": [
             [],
             [],
@@ -68,9 +71,9 @@
         ]
     },
     {
-        "id": "9f6e1961.56f758",
+        "id": "1441ac93d8445246",
         "type": "mqtt in",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "",
         "topic": "/dlm/logs",
         "qos": "2",
@@ -79,18 +82,18 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 140,
+        "x": 200,
         "y": 240,
         "wires": [
             [
-                "00689b824c21f3a0"
+                "9947f479b9ce78ea"
             ]
         ]
     },
     {
-        "id": "4c894a2d.40c5a4",
+        "id": "5fea79d57699673b",
         "type": "inject",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "manTick",
         "repeat": "",
         "crontab": "",
@@ -98,48 +101,48 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 160,
-        "y": 500,
+        "x": 220,
+        "y": 560,
         "wires": [
             [
-                "0f772d7a327fa2d1"
+                "808855b677a8a9f7"
             ]
         ]
     },
     {
-        "id": "3a6bfae7.d1de46",
+        "id": "8d12a36a273c0a7d",
         "type": "comment",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "Acquisition des données MQTT",
         "info": "",
-        "x": 190,
+        "x": 250,
         "y": 180,
         "wires": []
     },
     {
-        "id": "9393c8a2.4df018",
+        "id": "86f19db93459b2be",
         "type": "comment",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "Envoi des données puis suppression de la db locale",
         "info": "",
-        "x": 250,
-        "y": 380,
+        "x": 310,
+        "y": 440,
         "wires": []
     },
     {
-        "id": "4a931634.ca4158",
+        "id": "a0af396823666eeb",
         "type": "comment",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "Récupération de l'ID de la voiture",
         "info": "",
-        "x": 187,
+        "x": 247,
         "y": 38,
         "wires": []
     },
     {
-        "id": "38877363.04f33c",
+        "id": "aed14d01a88ba10b",
         "type": "inject",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "startTicker",
         "props": [
             {
@@ -156,19 +159,19 @@
         "onceDelay": "",
         "topic": "",
         "payloadType": "str",
-        "x": 130,
+        "x": 190,
         "y": 80,
         "wires": [
             [
-                "991e31d6.7bbcd",
-                "f4d52df5dbffcb51"
+                "042c968f7057648e",
+                "27fa94aee689c0cc"
             ]
         ]
     },
     {
-        "id": "991e31d6.7bbcd",
+        "id": "042c968f7057648e",
         "type": "http request",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "getUUID",
         "method": "GET",
         "ret": "obj",
@@ -179,22 +182,18 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "credentials": {
-            "user": "",
-            "password": ""
-        },
-        "x": 300,
+        "x": 360,
         "y": 80,
         "wires": [
             [
-                "c1ec52f6.cc6ea"
+                "793df0f135d62272"
             ]
         ]
     },
     {
-        "id": "c1ec52f6.cc6ea",
+        "id": "793df0f135d62272",
         "type": "function",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "hashUUID",
         "func": "var UUID = msg.payload.result;\nglobal.set(\"carID\", UUID);\n\nreturn UUID;",
         "outputs": 1,
@@ -202,18 +201,18 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
+        "x": 530,
         "y": 80,
         "wires": [
             [
-                "37849b0a94ad3e28"
+                "d474312c00b00cea"
             ]
         ]
     },
     {
-        "id": "00689b824c21f3a0",
+        "id": "9947f479b9ce78ea",
         "type": "function",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "logsGenerator",
         "func": "try{\n    var date;\n    date = new Date();\n    date = (\n        date.getFullYear() + '-' \n        + ('00' + (date.getMonth()+1)).slice(-2) + '-'\n        + ('00' + date.getDate()).slice(-2) + ' '\n        + ('00' + date.getHours()).slice(-2) + ':'\n        + ('00' + date.getMinutes()).slice(-2) + ':'\n        + ('00' + date.getSeconds()).slice(-2)\n    );\n     \n    var m_json = {\n        \"payload\":{\n            \"carID\"   : \"12345\", //global.get(\"carID\"),\n            \"topic\"   : msg.topic,\n            \"rawData\" : msg.payload.toString(),\n            \"time\"    : date,\n            \"camera\"  : CC(msg.payload.substring(0,2)),\n            \"type\"    : TT(msg.payload.substring(2,4)),\n            \"data\"    : DDDD(msg.payload.substring(4,8))\n        }\n    };\n    \n    return [m_json, {\"payload\" : DDDD(msg.payload.substring(4,8))}];\n} catch (Exception) {\n    return \"trame inconnue\"\n}\n\nfunction CC(cc){\n    try{\n        if ( cc == \"00\" ) { return \"front\"; }\n        if ( cc == \"01\" ) { return \"back\"; }\n        else { return \"camera inconnue\"; }\n    }catch ( Exception ){\n        return \"erreur camera\";\n    }\n}\n\nfunction TT(tt){\n    try{\n        if ( tt == \"00\" ) { return \"info\"; }\n        if ( tt == \"01\" ) { return \"warning\"; }\n        if ( tt == \"10\" ) { return \"critical\"; }\n        else { return \"type inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur type\";\n    }\n}\nfunction DDDD(dddd){\n    try{\n        if ( dddd == \"0000\" ) { return \"pieton\"; }\n        if ( dddd == \"0001\" ) { return \"voiture\"; }\n        if ( dddd == \"0010\" ) { return \"camion\"; }\n        if ( dddd == \"0011\" ) { return \"velo\"; }\n        if ( dddd == \"0100\" ) { return \"ligne\"; }\n        if ( dddd == \"0101\" ) { return \"feu_R\"; }\n        if ( dddd == \"0110\" ) { return \"feu_V\"; }\n        if ( dddd == \"0111\" ) { return \"vitesse\"; }\n        if ( dddd == \"1000\" ) { return \"plaque\"; }\n        if ( dddd == \"1001\" ) { return \"stop\"; }\n        if ( dddd == \"1010\" ) { return \"ceder_pass\"; }\n        if ( dddd == \"1011\" ) { return \"sens_interd\"; }\n        else { return \"code inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur code\";\n    }\n}",
         "outputs": 2,
@@ -221,23 +220,23 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
+        "x": 380,
         "y": 240,
         "wires": [
             [
-                "3da0cf8b05e794c7",
-                "caa5d5ac.150cf8"
+                "0d4cf4788b84b821",
+                "063b8e11d023b053"
             ],
             [
-                "31e4a00b9a03def8",
-                "b363e658216d7743"
+                "f8b60400c6aa13d5",
+                "4d7ce5b9c36f860b"
             ]
         ]
     },
     {
-        "id": "3da0cf8b05e794c7",
+        "id": "0d4cf4788b84b821",
         "type": "debug",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "debugLogs",
         "active": true,
         "tosidebar": true,
@@ -247,15 +246,15 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 550,
+        "x": 610,
         "y": 220,
         "wires": []
     },
     {
-        "id": "974b316904be13c1",
+        "id": "8b6d69ce6aaaef29",
         "type": "inject",
-        "z": "11c28ba8.4377a4",
-        "name": "manTest",
+        "z": "7842e8e0992ee154",
+        "name": "testInfo",
         "props": [
             {
                 "p": "payload"
@@ -272,18 +271,18 @@
         "topic": "/dlm/logs",
         "payload": "01000101",
         "payloadType": "str",
-        "x": 120,
+        "x": 170,
         "y": 300,
         "wires": [
             [
-                "00689b824c21f3a0"
+                "9947f479b9ce78ea"
             ]
         ]
     },
     {
-        "id": "37849b0a94ad3e28",
+        "id": "d474312c00b00cea",
         "type": "debug",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "UUID",
         "active": true,
         "tosidebar": true,
@@ -293,14 +292,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
+        "x": 690,
         "y": 80,
         "wires": []
     },
     {
-        "id": "31e4a00b9a03def8",
+        "id": "f8b60400c6aa13d5",
         "type": "mqtt out",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "display",
         "topic": "/dlm/display/",
         "qos": "",
@@ -311,14 +310,14 @@
         "correl": "",
         "expiry": "",
         "broker": "9587a71d.b08928",
-        "x": 530,
+        "x": 590,
         "y": 280,
         "wires": []
     },
     {
-        "id": "b363e658216d7743",
+        "id": "4d7ce5b9c36f860b",
         "type": "debug",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "debugDisplay",
         "active": true,
         "tosidebar": true,
@@ -328,14 +327,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 560,
+        "x": 620,
         "y": 320,
         "wires": []
     },
     {
-        "id": "0f772d7a327fa2d1",
+        "id": "808855b677a8a9f7",
         "type": "file in",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "getLogs",
         "filename": "/home/nshx/.node-red/DLM/logs/logs.json",
         "format": "utf8",
@@ -343,37 +342,18 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 323,
-        "y": 462,
+        "x": 380,
+        "y": 520,
         "wires": [
             [
-                "8eb8fbc7dd8985d7"
+                "8de74b57371bf9a5"
             ]
         ]
     },
     {
-        "id": "f4d52df5dbffcb51",
-        "type": "ip",
-        "z": "11c28ba8.4377a4",
-        "name": "ip",
-        "https": false,
-        "timeout": "5000",
-        "internalIPv4": true,
-        "internalIPv6": false,
-        "publicIPv4": true,
-        "publicIPv6": false,
-        "x": 290,
-        "y": 120,
-        "wires": [
-            [
-                "29a0bfde0ce9e7a0"
-            ]
-        ]
-    },
-    {
-        "id": "29a0bfde0ce9e7a0",
+        "id": "98d2ad6e6ef5335d",
         "type": "debug",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "name": "IPv4",
         "active": true,
         "tosidebar": true,
@@ -383,17 +363,109 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 450,
+        "x": 510,
         "y": 120,
         "wires": []
     },
     {
-        "id": "8eb8fbc7dd8985d7",
+        "id": "599784546ed900c9",
+        "type": "inject",
+        "z": "7842e8e0992ee154",
+        "name": "testCritical",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/dlm/logs",
+        "payload": "01100011",
+        "payloadType": "str",
+        "x": 180,
+        "y": 340,
+        "wires": [
+            [
+                "9947f479b9ce78ea"
+            ]
+        ]
+    },
+    {
+        "id": "c76c903b32288189",
+        "type": "inject",
+        "z": "7842e8e0992ee154",
+        "name": "testWarning",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "/dlm/logs",
+        "payload": "00010111",
+        "payloadType": "str",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "9947f479b9ce78ea"
+            ]
+        ]
+    },
+    {
+        "id": "361bf897a6ed89c1",
+        "type": "mongodb out",
+        "z": "7842e8e0992ee154",
+        "mongodb": "715a6cd00300d85f",
+        "name": "saveData2RemoteDB",
+        "collection": "logs",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 760,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "27fa94aee689c0cc",
+        "type": "ip",
+        "z": "7842e8e0992ee154",
+        "name": "ip",
+        "https": false,
+        "timeout": "5000",
+        "internalIPv4": true,
+        "internalIPv6": false,
+        "publicIPv4": true,
+        "publicIPv6": false,
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "98d2ad6e6ef5335d"
+            ]
+        ]
+    },
+    {
+        "id": "aab7dfbe9063b2f3",
         "type": "function",
-        "z": "11c28ba8.4377a4",
+        "z": "7842e8e0992ee154",
         "d": true,
         "name": "saveData2RemoteDB",
-        "func": "var { MongoClient } = context.global.get('mongodb');\nconst DB_USER = 'adminfgo';\nconst PASSWORD = encodeURIComponent('796nfo41'); \nconst uri = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0.t22mb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority\"`;\nconst client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst findItems = async () => {\n    try {\n        await client.connect();\n        console.log(\"Connected to mongodb!\");\n        const db = client.db('DLM').collection('logs');\n        const items = await db.collection('items').insertMany(msg.payload);\n    } catch(e) {\n        console.error(e);\n    }\n    finally {\n        // close connection\n        client.close();\n    }\n}\n\nreturn msg;",
+        "func": "var { MongoClient } = context.global.get('mongodb');\nconst DB_USER = 'adminfgo';\nconst PASSWORD = encodeURIComponent('796nfo41'); \nconst uri = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0.t22mb.mongodb.net/DLM?retryWrites=true&w=majority\"`;\nconst client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst findItems = async () => {\n    try {\n        await client.connect();\n        console.log(\"Connected to mongodb!\");\n        const db = client.db('DLM').collection('logs');\n        const items = await db.collection('items').insertMany(msg.payload);\n    } catch(e) {\n        console.error(e);\n    }\n    finally {\n        // close connection\n        client.close();\n    }\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -404,11 +476,28 @@
                 "module": "mongodb"
             }
         ],
-        "x": 543,
-        "y": 462,
+        "x": 620,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8de74b57371bf9a5",
+        "type": "split",
+        "z": "7842e8e0992ee154",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 550,
+        "y": 520,
         "wires": [
             [
-                "cb1f6b8f.63eac8"
+                "361bf897a6ed89c1"
             ]
         ]
     },
@@ -429,5 +518,15 @@
         "willTopic": "",
         "willQos": "0",
         "willPayload": ""
+    },
+    {
+        "id": "715a6cd00300d85f",
+        "type": "mongodb",
+        "hostname": "cluster0.t22mb.mongodb.net",
+        "topology": "dnscluster",
+        "connectOptions": "?retryWrites=true&w=majority",
+        "port": "27017",
+        "db": "DLM",
+        "name": "DLM"
     }
 ]
