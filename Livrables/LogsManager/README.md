@@ -34,6 +34,30 @@ mosquitto_pub -h localhost -P 1883 -t <topic> -m <message>
 `</br>
 Simulate alerts (before node-red implementation)
 
+# MongoDB Atlas - Remote free DB
+## Register new account
+https://www.mongodb.com/cloud/atlas/lp/general/try?utm_source=compass&utm_medium=product</br>
+1. Create project: DLM</br>
+2. Create user|pw</br>
+3. Create cluster</br>
+4. Create collection: logs</br>
+5. Configure Network Access</br>
+6. Get remote URL: Connect()</br>
+![image](https://user-images.githubusercontent.com/92402906/145913907-7bf96ffb-2282-4085-bcd0-21da38af67cb.png)
+
+## Mongo Shell
+### Installation
+```
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-mongosh
+```
+### Start mongosh
+`
+mongosh "mongodb+srv://cluster0.t22mb.mongodb.net/DLM" --username <user>
+`
+
 # Node-red
 Node-RED is a flow-based development tool for visual programming developed originally by IBM for wiring together hardware devices, APIs and online services as part of the Internet of Things.
 ## Installation
@@ -51,3 +75,15 @@ node-red
 Once launched, node-red GUI is available at http://127.0.0.1:1880</br>
 ![image](https://user-images.githubusercontent.com/92402906/145910656-a3c22296-c4e6-49f4-b55b-87cbc03fee32.png)
 ![image](https://user-images.githubusercontent.com/92402906/145910698-e2a593fd-7ace-461e-b717-7a13f579e601.png)
+
+## mongodb dependency
+From Ubuntu Shell:
+```
+cd ~/.node-red
+npm install mongodb
+vi setting.js
+```
+In the file setting.js, look for 'functionGlobalContext'</br>
+press 'I' (insert) to enter the following line :
+![image](https://user-images.githubusercontent.com/92402906/145914616-90a45305-d4ed-4094-b27f-6d4569384ff0.png)
+press 'esc' ('echap') then write ':wq' to save the changes.
