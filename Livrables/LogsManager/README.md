@@ -57,6 +57,7 @@ sudo apt-get install -y mongodb-mongosh
 `
 mongosh "mongodb+srv://cluster0.t22mb.mongodb.net/DLM" --username <user>
 `
+![image](https://user-images.githubusercontent.com/92402906/145914954-4f443ea4-1477-43fa-92fc-f8a9e92d0b2a.png)
 
 # Node-red
 Node-RED is a flow-based development tool for visual programming developed originally by IBM for wiring together hardware devices, APIs and online services as part of the Internet of Things.
