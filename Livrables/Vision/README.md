@@ -63,7 +63,25 @@ ou</br>
   > ./Multiple_Video_Flux.py</br>
 
 ## Fonctionnement des différents algorithmes 
-### Single_Flux_Video & Multiple_Flux_Video.</br>
+### Single_Flux_Video & Multiple_Flux_Video</br>
+<ul>
+> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu </br>
+La classe utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
+
+    > La fonction principale qui est appelé par l'objet caméra dans son thread s'appelle camPreview().</br>
+    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA et de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale)
+    
+        .--------------------------.
+        |        |        |        |                     
+        |        |        |        |
+        |        |        |        |
+        |        |        |        |
+        |        |        |        |
+        |        |        |        |
+        |        |        |        |
+        .--------------------------.
+    _Format des images après sectionnement_
+</ul>
 
 ### Traffic_Light_Detection</br>
 
