@@ -62,11 +62,13 @@
         "timer": "",
         "winHide": false,
         "name": "clearLocalDB",
-        "x": 730,
-        "y": 440,
+        "x": 550,
+        "y": 700,
         "wires": [
             [],
-            [],
+            [
+                "61bba8fe56b24522"
+            ],
             []
         ]
     },
@@ -123,9 +125,9 @@
         "id": "86f19db93459b2be",
         "type": "comment",
         "z": "7842e8e0992ee154",
-        "name": "Envoi des données puis suppression de la db locale",
+        "name": "Envoi des données",
         "info": "",
-        "x": 310,
+        "x": 210,
         "y": 440,
         "wires": []
     },
@@ -214,13 +216,13 @@
         "type": "function",
         "z": "7842e8e0992ee154",
         "name": "logsGenerator",
-        "func": "try{\n    var date;\n    date = new Date();\n    date = (\n        date.getFullYear() + '-' \n        + ('00' + (date.getMonth()+1)).slice(-2) + '-'\n        + ('00' + date.getDate()).slice(-2) + ' '\n        + ('00' + date.getHours()).slice(-2) + ':'\n        + ('00' + date.getMinutes()).slice(-2) + ':'\n        + ('00' + date.getSeconds()).slice(-2)\n    );\n     \n    var m_json = {\n        \"payload\":{\n            \"carID\"   : \"12345\", //global.get(\"carID\"),\n            \"topic\"   : msg.topic,\n            \"rawData\" : msg.payload.toString(),\n            \"time\"    : date,\n            \"camera\"  : CC(msg.payload.substring(0,2)),\n            \"type\"    : TT(msg.payload.substring(2,4)),\n            \"data\"    : DDDD(msg.payload.substring(4,8))\n        }\n    };\n    \n    return [m_json, {\"payload\" : DDDD(msg.payload.substring(4,8))}];\n} catch (Exception) {\n    return \"trame inconnue\"\n}\n\nfunction CC(cc){\n    try{\n        if ( cc == \"00\" ) { return \"front\"; }\n        if ( cc == \"01\" ) { return \"back\"; }\n        else { return \"camera inconnue\"; }\n    }catch ( Exception ){\n        return \"erreur camera\";\n    }\n}\n\nfunction TT(tt){\n    try{\n        if ( tt == \"00\" ) { return \"info\"; }\n        if ( tt == \"01\" ) { return \"warning\"; }\n        if ( tt == \"10\" ) { return \"critical\"; }\n        else { return \"type inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur type\";\n    }\n}\nfunction DDDD(dddd){\n    try{\n        if ( dddd == \"0000\" ) { return \"pieton\"; }\n        if ( dddd == \"0001\" ) { return \"voiture\"; }\n        if ( dddd == \"0010\" ) { return \"camion\"; }\n        if ( dddd == \"0011\" ) { return \"velo\"; }\n        if ( dddd == \"0100\" ) { return \"ligne\"; }\n        if ( dddd == \"0101\" ) { return \"feu_R\"; }\n        if ( dddd == \"0110\" ) { return \"feu_V\"; }\n        if ( dddd == \"0111\" ) { return \"vitesse\"; }\n        if ( dddd == \"1000\" ) { return \"plaque\"; }\n        if ( dddd == \"1001\" ) { return \"stop\"; }\n        if ( dddd == \"1010\" ) { return \"ceder_pass\"; }\n        if ( dddd == \"1011\" ) { return \"sens_interd\"; }\n        else { return \"code inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur code\";\n    }\n}",
+        "func": "try{\n    var date;\n    date = new Date();\n    date = (\n        date.getFullYear() + '-' \n        + ('00' + (date.getMonth()+1)).slice(-2) + '-'\n        + ('00' + date.getDate()).slice(-2) + ' '\n        + ('00' + date.getHours()).slice(-2) + ':'\n        + ('00' + date.getMinutes()).slice(-2) + ':'\n        + ('00' + date.getSeconds()).slice(-2)\n    );\n     \n    var m_json = {\n        \"payload\":{\n            \"carID\"   : global.get(\"carID\"),\n            \"topic\"   : msg.topic,\n            \"rawData\" : msg.payload.toString(),\n            \"time\"    : date,\n            \"camera\"  : CC(msg.payload.substring(0,2)),\n            \"type\"    : TT(msg.payload.substring(2,4)),\n            \"data\"    : DDDD(msg.payload.substring(4,8))\n        }\n    };\n    \n    return [m_json, {\"payload\" : DDDD(msg.payload.substring(4,8))}];\n} catch (Exception) {\n    return \"trame inconnue\"\n}\n\nfunction CC(cc){\n    try{\n        if ( cc == \"00\" ) { return \"front\"; }\n        if ( cc == \"01\" ) { return \"back\"; }\n        else { return \"camera inconnue\"; }\n    }catch ( Exception ){\n        return \"erreur camera\";\n    }\n}\n\nfunction TT(tt){\n    try{\n        if ( tt == \"00\" ) { return \"info\"; }\n        if ( tt == \"01\" ) { return \"warning\"; }\n        if ( tt == \"10\" ) { return \"critical\"; }\n        else { return \"type inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur type\";\n    }\n}\nfunction DDDD(dddd){\n    try{\n        if ( dddd == \"0000\" ) { return \"pieton\"; }\n        if ( dddd == \"0001\" ) { return \"voiture\"; }\n        if ( dddd == \"0010\" ) { return \"camion\"; }\n        if ( dddd == \"0011\" ) { return \"velo\"; }\n        if ( dddd == \"0100\" ) { return \"ligne\"; }\n        if ( dddd == \"0101\" ) { return \"feu_R\"; }\n        if ( dddd == \"0110\" ) { return \"feu_V\"; }\n        if ( dddd == \"0111\" ) { return \"vitesse\"; }\n        if ( dddd == \"1000\" ) { return \"plaque\"; }\n        if ( dddd == \"1001\" ) { return \"stop\"; }\n        if ( dddd == \"1010\" ) { return \"ceder_pass\"; }\n        if ( dddd == \"1011\" ) { return \"sens_interd\"; }\n        else { return \"code inconnu\"; }\n    }catch ( Exception ){\n        return \"erreur code\";\n    }\n}",
         "outputs": 2,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
+        "x": 400,
         "y": 240,
         "wires": [
             [
@@ -460,29 +462,6 @@
         ]
     },
     {
-        "id": "aab7dfbe9063b2f3",
-        "type": "function",
-        "z": "7842e8e0992ee154",
-        "d": true,
-        "name": "saveData2RemoteDB",
-        "func": "var { MongoClient } = context.global.get('mongodb');\nconst DB_USER = 'adminfgo';\nconst PASSWORD = encodeURIComponent('796nfo41'); \nconst uri = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0.t22mb.mongodb.net/DLM?retryWrites=true&w=majority\"`;\nconst client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst findItems = async () => {\n    try {\n        await client.connect();\n        console.log(\"Connected to mongodb!\");\n        const db = client.db('DLM').collection('logs');\n        const items = await db.collection('items').insertMany(msg.payload);\n    } catch(e) {\n        console.error(e);\n    }\n    finally {\n        // close connection\n        client.close();\n    }\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [
-            {
-                "var": "mongodb",
-                "module": "mongodb"
-            }
-        ],
-        "x": 620,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "8de74b57371bf9a5",
         "type": "split",
         "z": "7842e8e0992ee154",
@@ -500,6 +479,99 @@
                 "361bf897a6ed89c1"
             ]
         ]
+    },
+    {
+        "id": "3a5e54e0aa4186c2",
+        "type": "inject",
+        "z": "7842e8e0992ee154",
+        "name": "ticker1jour",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "31 00 * * *",
+        "once": false,
+        "onceDelay": "",
+        "topic": "DEBUG",
+        "payloadType": "date",
+        "x": 170,
+        "y": 660,
+        "wires": [
+            [
+                "b2a4db9fa35b6433"
+            ]
+        ]
+    },
+    {
+        "id": "f1c07deb95f4b23b",
+        "type": "inject",
+        "z": "7842e8e0992ee154",
+        "name": "manTick",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 200,
+        "y": 740,
+        "wires": [
+            [
+                "b2a4db9fa35b6433"
+            ]
+        ]
+    },
+    {
+        "id": "b2a4db9fa35b6433",
+        "type": "file in",
+        "z": "7842e8e0992ee154",
+        "name": "getLogs",
+        "filename": "/home/nshx/.node-red/DLM/logs/logs.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 360,
+        "y": 700,
+        "wires": [
+            [
+                "8b560209cfd79020"
+            ]
+        ]
+    },
+    {
+        "id": "61bba8fe56b24522",
+        "type": "debug",
+        "z": "7842e8e0992ee154",
+        "name": "logsCleared",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "ea3b0f290e07e7fe",
+        "type": "comment",
+        "z": "7842e8e0992ee154",
+        "name": "Supression des données",
+        "info": "",
+        "x": 230,
+        "y": 620,
+        "wires": []
     },
     {
         "id": "9587a71d.b08928",
