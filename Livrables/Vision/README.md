@@ -65,10 +65,10 @@ ou</br>
 ## Fonctionnement des différents algorithmes 
 ### Single_Flux_Video & Multiple_Flux_Video</br>
 <ul>
-> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe</br> utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
+> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
 
     > La fonction principale qui est appelée par l'objet caméra dans son thread s'appelle camPreview().</br>
-    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA, de</br> sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des</br> traitement dans une fenêtre graphique.
+    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitement dans une fenêtre graphique.
     
     _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera</br> visualisé ni enregistré._
     
@@ -104,9 +104,9 @@ Ici, 2 fonctions sont utilisées pour détecter les feux tricolores de par leurs
           > Puis avec une condition "if" je test l'alignement des centres sur l'axe des abscisses</br>
           if(x_centre_i and x_centre_i+1) == x_centre_i+2):</br>
               alors condition vérifiée</br>
-          > Puis je récupére l'index du cercle avec la valeur en y la plus faible (comme l'axe des y est inversé, la valeur la plus</br> faible nous donne l'index du cercle le plus haut dans l'image). Enfin, je récupère la couleur au centre de ce cercle et si la valeur</br> récupérer pour la composante rouge est supérieur au seuil que j'ai fixé, alors ce cercle est actif et rouge (donc cercle supérieur en</br> rouge c'est bien un feu tricolores).</br>
+          > Puis je récupére l'index du cercle avec la valeur en y la plus faible (comme l'axe des y est inversé, la valeur la plus faible nous donne l'index du cercle le plus haut dans l'image). Enfin, je récupère la couleur au centre de ce cercle et si la valeur récupérer pour la composante rouge est supérieur au seuil que j'ai fixé, alors ce cercle est actif et rouge (donc cercle supérieur en</br> rouge c'est bien un feu tricolores).</br>
           > Si, le cercle du haut n'est pas actif, je fais la même opération pour le cercle du bas en testant la couleur verte.</br>
-          > Si tout est positif, je dessine les cercles et le rectangle en inscrivant la couleur du feu actif et je renvoi l'information </br>à l'utilisateur, sinon, je ne fais rien car aucune feu n'est détecté.</br>
+          > Si tout est positif, je dessine les cercles et le rectangle en inscrivant la couleur du feu actif et je renvoi l'information à l'utilisateur, sinon, je ne fais rien car aucune feu n'est détecté.</br>
 
 ### Object_Detection</br>
 Je me base sur un programme d'intelligence artificiel pré-entrainé.
@@ -117,11 +117,10 @@ Transformé de hough linéaire
 ### Color_Detection</br>
 Pas utilisé.
 
-
-## Updates :
+## Mis à jour :
 &nbsp;&nbsp;&nbsp;- 14/12/2021: Version 1.0.0, Alexandre LEPERS (lepers199)
 
-## References
+## Références
 https://perso.ensta-paris.fr/~pcarpent/MO102/Cours/Projets/Pr-vision.pdf</br>
 https://stackoverflow.com/questions/11386556/converting-an-opencv-bgr-8-bit-image-to-cie-lab</br> https://www.researchgate.net/publication/230601628_Traffic_Lights_Detection_in_Adverse_Conditions_Using_Color_Symmetry_and_Spatiotemporal_Information</br>
 https://gist.github.com/bikz05/6fd21c812ef6ebac66e1</br>
