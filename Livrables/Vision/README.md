@@ -65,12 +65,12 @@ ou</br>
 ## Fonctionnement des différents algorithmes 
 ### Single_Flux_Video & Multiple_Flux_Video</br>
 <ul>
-> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
+> class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe</br> utile les threads pour séprarer les flux de chaque caméras sur des canaux bien distinct.</br>
 
     > La fonction principale qui est appelée par l'objet caméra dans son thread s'appelle camPreview().</br>
-    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitement dans une fenêtre graphique.
+    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du model caffe pour l'IA, de</br> sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des</br> traitement dans une fenêtre graphique.
     
-    _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera visualisé ni enregistré._
+    _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera</br> visualisé ni enregistré._
     
         .--------------------------.
         |        |        |        |                     
@@ -85,28 +85,28 @@ ou</br>
 </ul>
 
 ### Traffic_Light_Detection</br>
-Ici, 2 fonctions sont utilisées pour détecter les feux tricolores de par leurs formes et leurs couleurs:
-  - Fonction "find_rect()" => Recherche les formes rectangulaires verticales noires dans un espace colorimétrique HSV. Application de traitement d'image courant:
-          > Elévation du contraste pour le noir: cv2.normalize(pixels_noir, 0, 255, cv2.NORM_MINMAX)
-          > Construction d'élements structurés de taille 3x3 et de forme rectangulaire: cv2.getStructuringElement()
-          > Suppression des faibles contours: cv2.morphologyEx(élements_strcturés, cv2.MORPH_OPEN, kernel)
-          > Listing des contours restants: cv2.findContours(img, cv2.RETR_LIST)
-          > Pour chaque contours de la liste vérifie ses dimensions: (si w > 100 px et h compris entre w et 2 * w)
-          > Recherche de cercles à l'intérieur du rectangle noir trouvé (si 3 cercles alignés, alors le feu est détecté)
-  - Fonction "find_circle()" => Recherche les formes circulaires à l'intérieur d'un rectangle noir, vérifie l'alignement verticale des cercle par leur centre, puis analyse la position des couleurs détectées dans ces cercles (si cercle supérieur = rouge ou si cercle inférieur = vert):
-          > Changement d'espace colorimétrique BGR2GRay: cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-          > Lissage gaussien: cv2.GaussianBlur(img, (9, 9))
-          > Détection de cercle avec la transformée de Hough: cv2.HoughCircles()
-          > Si pour un rectangle, le nombre de cercle détecter à l'intérieur est inférieur à 3, alors je stop
-          > sinon, je récupére leur centre respectif et la taille de leur rayon avec la boucle for
-          for (x_centre, y_centre, rayon) in circles:
-              sauvegarde(x_centre_i, y_centre_i, rayon_i)
-          > Puis avec une condition "if" je test l'alignement des centres sur l'axe des absices
-          if(x_centre_i and x_centre_i+1) == x_centre_i+2):
-              alors condition vérifiée
-          > Puis je récupére l'index du cercle avec la valeur en y la plus faible (comme l'axe des y est inversé, la valeur la plus faible nous donne l'index du cercle le plus haut dans l'image). Enfin, je récupère la couleur au centre de ce cercle et si la valeur récupérer pour la composante rouge est supérieur au seuil que j'ai fixé, alors ce cercle est actif et rouge (donc cercle supérieur en rouge c'est bien un feu tricolores).
-          > Si, le cercle du haut n'est pas actif, je fais la même opération pour le cercle du bas en testant la couleur verte.
-          > Si tout est positif, je dessine les cercles et le rectangle en inscrivant la couleur du feu actif et je renvoi l'information à l'utilisateur, sinon, je ne fais rien car aucune feu n'est détecté.
+Ici, 2 fonctions sont utilisées pour détecter les feux tricolores de par leurs formes et leurs couleurs:</br>
+  - Fonction "find_rect()" => Recherche les formes rectangulaires verticales noires dans un espace colorimétrique HSV. Application de traitement d'image courant:</br>
+          > Elévation du contraste pour le noir: cv2.normalize(pixels_noir, 0, 255, cv2.NORM_MINMAX)</br>
+          > Construction d'élements structurés de taille 3x3 et de forme rectangulaire: cv2.getStructuringElement()</br>
+          > Suppression des faibles contours: cv2.morphologyEx(élements_strcturés, cv2.MORPH_OPEN, kernel)</br>
+          > Listing des contours restants: cv2.findContours(img, cv2.RETR_LIST)</br>
+          > Pour chaque contours de la liste vérifie ses dimensions: (si w > 100 px et h compris entre w et 2 * w)</br>
+          > Recherche de cercles à l'intérieur du rectangle noir trouvé (si 3 cercles alignés, alors le feu est détecté)</br>
+  - Fonction "find_circle()" => Recherche les formes circulaires à l'intérieur d'un rectangle noir, vérifie l'alignement verticale des cercle par leur centre, puis analyse la position des couleurs détectées dans ces cercles (si cercle supérieur = rouge ou si cercle inférieur = vert):</br>
+          > Changement d'espace colorimétrique BGR2GRay: cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</br>
+          > Lissage gaussien: cv2.GaussianBlur(img, (9, 9))</br>
+          > Détection de cercle avec la transformée de Hough: cv2.HoughCircles()</br>
+          > Si pour un rectangle, le nombre de cercle détecter à l'intérieur est inférieur à 3, alors je stop.</br>
+          > sinon, je récupére leur centre respectif et la taille de leur rayon avec la boucle for</br>
+          for (x_centre, y_centre, rayon) in circles:</br>
+              sauvegarde(x_centre_i, y_centre_i, rayon_i)</br>
+          > Puis avec une condition "if" je test l'alignement des centres sur l'axe des abscisses</br>
+          if(x_centre_i and x_centre_i+1) == x_centre_i+2):</br>
+              alors condition vérifiée</br>
+          > Puis je récupére l'index du cercle avec la valeur en y la plus faible (comme l'axe des y est inversé, la valeur la plus</br> faible nous donne l'index du cercle le plus haut dans l'image). Enfin, je récupère la couleur au centre de ce cercle et si la valeur</br> récupérer pour la composante rouge est supérieur au seuil que j'ai fixé, alors ce cercle est actif et rouge (donc cercle supérieur en</br> rouge c'est bien un feu tricolores).</br>
+          > Si, le cercle du haut n'est pas actif, je fais la même opération pour le cercle du bas en testant la couleur verte.</br>
+          > Si tout est positif, je dessine les cercles et le rectangle en inscrivant la couleur du feu actif et je renvoi l'information </br>à l'utilisateur, sinon, je ne fais rien car aucune feu n'est détecté.</br>
 
 ### Object_Detection</br>
 Je me base sur un programme d'intelligence artificiel pré-entrainé.
