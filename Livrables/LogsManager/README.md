@@ -7,7 +7,7 @@ Ubuntu 18.04 LTS ("Bionic")</br>
 sudo apt update
 sudo apt install mosquitto mosquitto-clients
 ```
-Allow/disable mosquitto broker when device is turned on :
+Enable/disable mosquitto broker when device is turned on :
 ```
 sudo systemctl (enable|disable) mosquitto
 ```
