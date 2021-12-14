@@ -52,7 +52,7 @@ Télécharger puis décompresser le fichier src.zip.</br>
 </ul>
 
 ## Run Application
-Dans une invite de commande, déplaceé-vous jusqu'à l'emplacement des codes sources python.</br>
+Dans une invite de commande, déplacez-vous jusqu'à l'emplacement des codes sources python.</br>
 ### WINDOWS:
   > python Single_Video_Flux.py</br>
 ou</br>
