@@ -1,6 +1,6 @@
 ## DESCRIPTION
 ### DLMcontol.</br>
-Bibliothèque de contrôle "DLMcontrol" basé sur le modèle picar-4WD et exemples d'impléménetation avec deetction de feu avec contôle de la voiture .</br>
+Bibliothèque de contrôle "DLMcontrol" basé sur le modèle picar-4WD et exemples d'impléménetation avec detection de feu avec contôle de la voiture .</br>
 La documentation concernant la picar-4wd est fourni ci-dessous:</br>
 sources :  https://picar.readthedocs.io/en/latest/</br>
 </ul>
