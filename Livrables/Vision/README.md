@@ -11,15 +11,15 @@ Ces algorithmes ont pour objectif de monitorer l'avant et l'arrière d'un véhic
 
 #### Eléments détectable</br>
 <ul>
-  - <strong>Feux tricolores</strong></br>
-  - <strong>Personnes</strong></br>
-  - <strong>Voitures</strong></br>
-  - <strong>Camions</strong></br>
-  - <strong>Motos</strong></br>
-  - <strong>Voitures</strong></br>
-  - <strong>Chats</strong></br>
-  - <strong>Chiens</strong></br>
-  - <strong>Chevaux</strong></br>
+  - Feux tricolores</br>
+  - Personnes</br>
+  - Voitures</br>
+  - Bus</br>
+  - Motos</br>
+  - Voitures</br>
+  - Chats</br>
+  - Chiens</br>
+  - Chevaux</br>
 </ul>
 
 
