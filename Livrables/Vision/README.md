@@ -67,7 +67,7 @@ ou</br>
 > class camThread() => Permet de créer des objets caméras pour instancier un flux vidéo depuis n'importe quel port USB voulu. La classe utile les threads pour séparer les flux de chaque caméra sur des canaux bien distinct.</br>
 
     > La fonction principale qui est appelée par l'objet caméra dans son thread s'appelle camPreview().</br>
-    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du modème caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitements dans une fenêtre graphique.
+    Cette fonction permet d'initialiser les paramètres du flux vidéo, de récupérer les informations du modèle caffe pour l'IA, de sectionner les images en acquisition en 3 zones (vue de gauche, vue de droite, vue centrale) et enfin, afficher le résultat des traitements dans une fenêtre graphique.
     
     _note: L'affichage de la fenêtre ne sera utilisée que pour les démos/ présentations du projet. Dans un cas réel, aucun flux ne sera visualisé ni enregistré._
     
